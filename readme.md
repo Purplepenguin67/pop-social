@@ -5,11 +5,7 @@ This is a CLI app that allows a user to perform create, read, update, and delete
 
 ## User Story
 
-AS A business owner
 
-I WANT to be able to view and manage the departments, roles, and employees in my company
-
-SO THAT I can organize and plan my business
 
 ## Acceptance Criteria
 
