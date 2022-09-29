@@ -41,7 +41,7 @@ Have a high-quality README (with unique name, description, technologies used, sc
 
 - [@Douglas Snodgrass](https://www.github.com/purplepenguin67)
 
-- [@Qing Change](https://www.github.com/qing507543)
+- [@Qing Chang](https://www.github.com/qing507543)
 
 - [@Jaewoo Han](https://www.github.com/jaehan213)
 
