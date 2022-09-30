@@ -13,6 +13,9 @@ const postSchema = new Schema({
   user_id: {
     type: String,
   },
+  comments: [{
+    type: String
+  }]
 });
 
 module.exports = postSchema;

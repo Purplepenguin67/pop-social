@@ -12,9 +12,17 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        User: async (parent, { id }) => {
+        getUser: async (parent, { id }) => {
             const user = User.findOne({ _id: id });
             return user;
+        },
+        getPost: async (parent, { id }) => {
+            const post = Post.findOne({ _id: id });
+            return post;
+        },
+        getComment: async (parent, { id }) => {
+            const comment = Comment.findOne({ _id: id });
+            return comment;
         }
     },
     Mutation: {
@@ -45,6 +53,64 @@ const resolvers = {
             const user = await User.create({ username, email, password });
             const token = signToken(user);
             return { token, user };
+        },
+        addPost: async (parents, { postContent, imageContent }, context) => {
+            const newPost = await Post.create({ postContent, imageContent });
+            try {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $addToSet: { posts: newPost._id } },
+                    { new: true, runValidators: true });
+                return updatedUser;
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        addComment: async (parents, { commentContent }) => {
+            const newComment = await Comment.create({ commentContent });
+            try {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $addToSet: { comments: newComment._id } },
+                    { new: true, runValidators: true });
+                return updatedUser;
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        upvotePost: async (parents, { postId }) => {
+            const updatedPost = await Post.findOneAndUpdate(
+                { _id: postId },
+                { $inc: { upvotes: 1 } },
+                { new: true }
+            );
+            return updatedPost;
+        },
+        upvoteComment: async (parents, { commentId }) => {
+            const updatedComment = await Comment.findOneAndUpdate(
+                { _id: commentId },
+                { $inc: { upvotes: 1 } },
+                { new: true }
+            );
+            return updatedComment;
+        },
+        removePost: async (parents, { postId }, context) => {
+            const removedPost = await Post.destroy({ _id: postId });
+            const updatedUser = await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $pull: { posts: { postId } } },
+                { new: true }
+            );
+            return updatedUser;
+        },
+        removeComment: async (parents, { commentId }, context) => {
+            const removedComment = await Comment.destroy({ _id: commentId });
+            const updatedUser = await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $pull: { comments: { commentId } } },
+                { new: true }
+            );
+            return updatedUser;
         },
     }
 
