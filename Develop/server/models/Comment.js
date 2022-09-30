@@ -7,6 +7,11 @@ const commentSchema = new Schema({
     upvotes: {
         type: Integer,
     },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
+    },
     post_id: {
         type: String,
     },

@@ -25,11 +25,12 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($postContent: String!, $imageContent: String!) {
+  mutation addPost($postContent: String!, $imageContent: String) {
     addPost(postContent: $postContent, imageContent: $imageContent) {
         _id
         postContent
         imageContent
+        createdAt
         upvotes
         user_id
     }
@@ -42,6 +43,7 @@ export const ADD_COMMENT = gql`
         _id
         commentContent
         upvotes
+        createdAt
         user_id
         post_id
     }
@@ -54,6 +56,7 @@ mutation upvotePost($postId: String!) {
         _id
         postContent
         imageContent
+        createdAt
         upvotes
         user_id
     }
@@ -66,6 +69,7 @@ mutation upvoteComment($commentId: String!) {
         _id
         commentContent
         upvotes
+        createdAt
         user_id
         post_id
     }
@@ -78,20 +82,9 @@ mutation removePost($postId: String!) {
         _id
         username
         email
-        posts {
-            _id
-            postContent
-            imageContent
-            upvotes
-            user_id
-        }
-        comments {
-            _id
-            commentContent
-            upvotes
-            user_id
-            post_id
-        }
+        posts
+        comments
+        friends
     }
   }
 `;
@@ -99,23 +92,25 @@ mutation removePost($postId: String!) {
 export const REMOVE_COMMENT = gql`
 mutation removeComment($commentId: String!) {
     removeComment(commentId: $commentId) {
-        _id
-        username
-        email
-        posts {
-            _id
-            postContent
-            imageContent
-            upvotes
-            user_id
-        }
-        comments {
-            _id
-            commentContent
-            upvotes
-            user_id
-            post_id
-        }
+      _id
+      username
+      email
+      posts
+      comments
+      friends
+    }
+  }
+`;
+
+export const ADD_FRIEND = gql`
+mutation addFriend($_id: String!, $userId: String!) {
+    addFriend(_id: $_id, userId: $userId) {
+      _id
+      username
+      email
+      posts
+      comments
+      friends
     }
   }
 `;

@@ -12,17 +12,25 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        getUser: async (parent, { id }) => {
-            const user = User.findOne({ _id: id });
+        user: async (parent, { userId }) => {
+            const user = User.findOne({ _id: userId });
             return user;
         },
-        getPost: async (parent, { id }) => {
-            const post = Post.findOne({ _id: id });
-            return post;
+        // getPost: async (parent, { id }) => {
+        //     const post = Post.findOne({ _id: id });
+        //     return post;
+        // },
+        posts: async (parent) => {
+            const posts = Post.findAll().sort({ createdAt: -1 });
+            return posts;
         },
-        getComment: async (parent, { id }) => {
-            const comment = Comment.findOne({ _id: id });
-            return comment;
+        // getComment: async (parent, { id }) => {
+        //     const comment = Comment.findOne({ _id: id });
+        //     return comment;
+        // },
+        comments: async (parent, { postId }) => {
+            const comments = Comment.findAll({ postId: postId });
+            return comments;
         }
     },
     Mutation: {
@@ -108,6 +116,19 @@ const resolvers = {
             const updatedUser = await User.findOneAndUpdate(
                 { _id: context.user._id },
                 { $pull: { comments: { commentId } } },
+                { new: true }
+            );
+            return updatedUser;
+        },
+        addFriend: async (parents, { _id, userId }, context) => {
+            const updatedUser = await User.findOneAndUpdate(
+                { _id: _id },
+                { $addToSet: { friends: { userId } } },
+                { new: true }
+            );
+            const updatedUser2 = await User.findOneAndUpdate(
+                { _id: userId },
+                { $addToSet: { friends: { _id } } },
                 { new: true }
             );
             return updatedUser;

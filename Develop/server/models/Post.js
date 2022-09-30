@@ -10,6 +10,11 @@ const postSchema = new Schema({
   upvotes: {
     type: Integer,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
+  },
   user_id: {
     type: String,
   },

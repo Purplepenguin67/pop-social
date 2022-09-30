@@ -6,68 +6,60 @@ export const GET_ME = gql`
         _id
         username
         email
-        posts {
-            _id
-            postContent
-            imageContent
-            upvotes
-            user_id
-        }
-        comments {
-            _id
-            commentContent
-            upvotes
-            user_id
-            post_id
-        }
+        posts
+        comments
+        friends
     }
   }
 `;
 
 export const GET_USER = gql`
   query getUser($userId: String!) {
-    getUser(userId: $userId) {
+    user(userId: $userId) {
         _id
         username
         email
-        posts {
-            _id
-            postContent
-            imageContent
-            upvotes
-            user_id
-        }
-        comments {
-            _id
-            commentContent
-            upvotes
-            user_id
-            post_id
-        }
+        posts
+        comments
+        friends
     }
   }
 `;
 
-export const GET_COMMENT = gql`
-  query getComment($commentId: String!) {
-    getComment(commentId: $commentId) {
-        _id
-        commentContent
-        upvotes
-        user_id
-        post_id
+export const GET_POSTS = gql`
+  query getPosts {
+    posts {
+      _id
+      postContent
+      imageContent
+      upvotes
+      createdAt
+      user_id
     }
   }
 `;
 
-export const GET_POST = gql`
-  query getPost($postId: String!) {
-    getPost(postId: $postId) {
-        _id
-        postContent
-        imageContent
-        upvotes
-        user_id
+export const GET_COMMENTS = gql`
+  query getComments($postId: String!) {
+    comments(postId: $postId) {
+      _id
+      commentContent
+      upvotes
+      createdAt
+      post_id
+      user_id
     }
   }
 `;
+
+// export const GET_POST = gql`
+//   query getPost($postId: String!) {
+//     getPost(postId: $postId) {
+//         _id
+//         postContent
+//         imageContent
+//         upvotes
+//         user_id
+//     }
+//   }
+// `;
