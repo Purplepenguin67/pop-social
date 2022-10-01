@@ -1,5 +1,3 @@
-// No changes necessary as long App.js is defined
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';

@@ -7,22 +7,27 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     email: String!
-    posts: [Post]!
-    comments: [Comment]!
+    posts: [String]
+    comments: [String]
+    friends: [String]
   }
 
   type Post {
+    _id: ID!
     postContent: String!
-    imageContent: String
-    upvotes: Integer
-    user_id: String
+    upvotes: Int
+    createdAt: String
+    username: String!
+    comments: [String]
   }
 
   type Comment {
+    _id: ID!
     commentContent: String!
-    upvotes: Integer
-    post_id: String
-    user_id: String
+    upvotes: Int
+    createdAt: String
+    postId: String
+    username: String
   }
 
   type Auth {
@@ -31,26 +36,18 @@ const typeDefs = gql`
   }
 
   type Query {
-    me: User,
-    getUser(userIdd: String!): User
-    getPost(postId: String!): Post
-    getComment(commentId: String!): Comment
-  }
-
-  input bookInput {
-    bookId: String!
-    authors: [String]
-    description: String
-    title: String
-    image: String
-    link: String
+    me: User
+    user(username: String!): User
+    posts: [Post]
+    comments(postId: String!): [Comment]
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addPost(postContent: String!, imageContent: String): Post
+    addPost(postContent: String!): Post
     addComment(commentContent: String!): Comment
+    addFriend(userId: String!): User
     upvotePost(postId: String!): Post
     upvoteComment(commentId: String!): Comment
     removePost(postId: String!): User
