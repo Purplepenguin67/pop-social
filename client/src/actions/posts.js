@@ -13,3 +13,12 @@ export const getPosts = () => async (dispatch) => {
     }
 
 }
+
+export const createPost = () => async (dispatch) => {
+    try {
+        const 
+    } catch (error) {
+        
+    }
+
+}
