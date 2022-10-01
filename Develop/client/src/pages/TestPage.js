@@ -22,7 +22,8 @@ const TestPage = () => {
 
     const handleAddPost = async (text) => {
         // get token
-        const { data } = await addPost({ variables: { text } });
+        console.log(text);
+        const { data } = await addPost({ variables: { postContent: text } });
         console.log(data)
     };
 
