@@ -13,19 +13,21 @@ const typeDefs = gql`
   }
 
   type Post {
+    _id: ID!
     postContent: String!
-    imageContent: String
     upvotes: Int
     createdAt: String
-    userId: String
+    username: String!
+    comments: [String]
   }
 
   type Comment {
+    _id: ID!
     commentContent: String!
     upvotes: Int
     createdAt: String
     postId: String
-    userId: String
+    username: String
   }
 
   type Auth {
@@ -35,7 +37,7 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    user(userId: String!): User
+    user(username: String!): User
     posts: [Post]
     comments(postId: String!): [Comment]
   }
@@ -45,7 +47,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     addPost(postContent: String!): Post
     addComment(commentContent: String!): Comment
-    addFriend(_id: String!, userId: String!): User
+    addFriend(userId: String!): User
     upvotePost(postId: String!): Post
     upvoteComment(commentId: String!): Comment
     removePost(postId: String!): User

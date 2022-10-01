@@ -12,13 +12,12 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        user: async (parent, { userId }) => {
-            const user = User.findOne({ _id: userId });
+        user: async (parent, { username }) => {
+            const user = User.findOne({ username: username });
             return user;
         },
         posts: async (parent) => {
-            const posts = Post.findAll().sort({ createdAt: -1 });
-            return posts;
+            return Post.find({}).sort({ createdAt: -1 });
         },
         comments: async (parent, { postId }) => {
             const comments = Comment.findAll({ postId: postId });
@@ -26,7 +25,7 @@ const resolvers = {
         }
     },
     Mutation: {
-        login: async (parent, { email, password }) => {
+        login: async (parent, { email, password }, context) => {
             // Look up the user by the provided email address. Since the `email` field is unique, we know that only one person will exist with that email
             const user = await User.findOne({ email });
 
@@ -54,24 +53,28 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        addPost: async (parents, { postContent, imageContent }, context) => {
+        addPost: async (parents, { postContent }, context) => {
+            // const currentUser = await User.findOne({ username: context.user._id })
+            console.log(context.user)
             const newPost = await Post.create({
                 postContent: postContent,
-                imageContent: imageContent,
-                userId: context.user._id
+                username: "test"
             });
-            try {
-                const updatedUser = await User.findOneAndUpdate(
-                    { _id: context.user._id },
-                    { $addToSet: { posts: newPost._id } },
-                    { new: true, runValidators: true });
-                return updatedUser;
-            } catch (err) {
-                console.log(err);
-            }
+            return newPost;
+            // try {
+            //     const updatedUser = await User.findOneAndUpdate(
+            //         { _id: context.user._id },
+            //         { $addToSet: { posts: newPost._id } },
+            //         { new: true, runValidators: true });
+            //     return updatedUser;
+            // } catch (err) {
+            // }
         },
         addComment: async (parents, { commentContent }, context) => {
-            const newComment = await Comment.create({ commentContent });
+            const newComment = await Comment.create({
+                commentContent: commentContent,
+                username: context.user.username
+            });
             try {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
@@ -102,7 +105,7 @@ const resolvers = {
             const removedPost = await Post.destroy({ _id: postId });
             const updatedUser = await User.findOneAndUpdate(
                 { _id: context.user._id },
-                { $pull: { posts: { postId } } },
+                { $pull: { posts: postId } },
                 { new: true }
             );
             return updatedUser;
@@ -111,20 +114,20 @@ const resolvers = {
             const removedComment = await Comment.destroy({ _id: commentId });
             const updatedUser = await User.findOneAndUpdate(
                 { _id: context.user._id },
-                { $pull: { comments: { commentId } } },
+                { $pull: { comments: commentId } },
                 { new: true }
             );
             return updatedUser;
         },
-        addFriend: async (parents, { _id, userId }, context) => {
+        addFriend: async (parents, { userId }, context) => {
             const updatedUser = await User.findOneAndUpdate(
-                { _id: _id },
-                { $addToSet: { friends: { userId } } },
+                { _id: context.user._id },
+                { $addToSet: { friends: userId } },
                 { new: true }
             );
             const updatedUser2 = await User.findOneAndUpdate(
                 { _id: userId },
-                { $addToSet: { friends: { _id } } },
+                { $addToSet: { friends: context.user._id } },
                 { new: true }
             );
             return updatedUser;
