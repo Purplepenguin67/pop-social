@@ -16,18 +16,10 @@ const resolvers = {
             const user = User.findOne({ _id: userId });
             return user;
         },
-        // getPost: async (parent, { id }) => {
-        //     const post = Post.findOne({ _id: id });
-        //     return post;
-        // },
         posts: async (parent) => {
             const posts = Post.findAll().sort({ createdAt: -1 });
             return posts;
         },
-        // getComment: async (parent, { id }) => {
-        //     const comment = Comment.findOne({ _id: id });
-        //     return comment;
-        // },
         comments: async (parent, { postId }) => {
             const comments = Comment.findAll({ postId: postId });
             return comments;
@@ -63,7 +55,11 @@ const resolvers = {
             return { token, user };
         },
         addPost: async (parents, { postContent, imageContent }, context) => {
-            const newPost = await Post.create({ postContent, imageContent });
+            const newPost = await Post.create({
+                postContent: postContent,
+                imageContent: imageContent,
+                userId: context.user._id
+            });
             try {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
@@ -74,7 +70,7 @@ const resolvers = {
                 console.log(err);
             }
         },
-        addComment: async (parents, { commentContent }) => {
+        addComment: async (parents, { commentContent }, context) => {
             const newComment = await Comment.create({ commentContent });
             try {
                 const updatedUser = await User.findOneAndUpdate(

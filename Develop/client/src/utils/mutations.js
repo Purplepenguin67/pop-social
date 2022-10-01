@@ -25,14 +25,14 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($postContent: String!, $imageContent: String) {
-    addPost(postContent: $postContent, imageContent: $imageContent) {
+  mutation addPost($postContent: String!) {
+    addPost(postContent: $postContent) {
         _id
         postContent
-        imageContent
-        createdAt
         upvotes
-        user_id
+        createdAt
+        username
+        comments
     }
   }
 `;
@@ -44,8 +44,8 @@ export const ADD_COMMENT = gql`
         commentContent
         upvotes
         createdAt
-        user_id
-        post_id
+        username
+        postId
     }
   }
 `;
@@ -53,12 +53,12 @@ export const ADD_COMMENT = gql`
 export const UPVOTE_POST = gql`
 mutation upvotePost($postId: String!) {
     upvotePost(postId: $postId) {
-        _id
-        postContent
-        imageContent
-        createdAt
-        upvotes
-        user_id
+      _id
+      postContent
+      upvotes
+      createdAt
+      username
+      comments
     }
   }
 `;
@@ -66,12 +66,12 @@ mutation upvotePost($postId: String!) {
 export const UPVOTE_COMMENT = gql`
 mutation upvoteComment($commentId: String!) {
     upvoteComment(commentId: $commentId) {
-        _id
-        commentContent
-        upvotes
-        createdAt
-        user_id
-        post_id
+      _id
+      commentContent
+      upvotes
+      createdAt
+      username
+      postId
     }
   }
 `;
@@ -79,12 +79,12 @@ mutation upvoteComment($commentId: String!) {
 export const REMOVE_POST = gql`
 mutation removePost($postId: String!) {
     removePost(postId: $postId) {
-        _id
-        username
-        email
-        posts
-        comments
-        friends
+      _id
+      username
+      email
+      posts
+      comments
+      friends
     }
   }
 `;
@@ -103,8 +103,8 @@ mutation removeComment($commentId: String!) {
 `;
 
 export const ADD_FRIEND = gql`
-mutation addFriend($_id: String!, $userId: String!) {
-    addFriend(_id: $_id, userId: $userId) {
+mutation addFriend($userId: String!) {
+    addFriend(userId: $userId) {
       _id
       username
       email

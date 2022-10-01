@@ -1,11 +1,12 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const commentSchema = new Schema({
     commentContent: {
         type: String,
     },
     upvotes: {
-        type: Integer,
+        type: Number,
+        default: 0,
     },
     createdAt: {
         type: Date,
@@ -15,9 +16,11 @@ const commentSchema = new Schema({
     post_id: {
         type: String,
     },
-    user_id: {
+    username: {
         type: String,
     },
 });
 
-module.exports = postSchema;
+const Comment = model('Comment', commentSchema);
+
+module.exports = Comment;

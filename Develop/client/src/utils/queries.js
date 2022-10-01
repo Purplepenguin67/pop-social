@@ -14,8 +14,8 @@ export const GET_ME = gql`
 `;
 
 export const GET_USER = gql`
-  query getUser($userId: String!) {
-    user(userId: $userId) {
+  query user($username: String!) {
+    user(username: $userId) {
         _id
         username
         email
@@ -27,27 +27,27 @@ export const GET_USER = gql`
 `;
 
 export const GET_POSTS = gql`
-  query getPosts {
+  query posts {
     posts {
       _id
       postContent
-      imageContent
       upvotes
       createdAt
-      user_id
+      username
+      comments
     }
   }
 `;
 
 export const GET_COMMENTS = gql`
-  query getComments($postId: String!) {
+  query comments($postId: String!) {
     comments(postId: $postId) {
       _id
       commentContent
       upvotes
       createdAt
       post_id
-      user_id
+      username
     }
   }
 `;

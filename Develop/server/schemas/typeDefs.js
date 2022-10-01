@@ -15,16 +15,17 @@ const typeDefs = gql`
   type Post {
     postContent: String!
     imageContent: String
-    upvotes: Integer
-    user_id: String
+    upvotes: Int
+    createdAt: String
+    userId: String
   }
 
   type Comment {
     commentContent: String!
-    upvotes: Integer
+    upvotes: Int
     createdAt: String
-    post_id: String
-    user_id: String
+    postId: String
+    userId: String
   }
 
   type Auth {
@@ -34,7 +35,7 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    user(_id: String!): User
+    user(userId: String!): User
     posts: [Post]
     comments(postId: String!): [Comment]
   }
@@ -42,7 +43,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addPost(postContent: String!, imageContent: String): Post
+    addPost(postContent: String!): Post
     addComment(commentContent: String!): Comment
     addFriend(_id: String!, userId: String!): User
     upvotePost(postId: String!): Post
