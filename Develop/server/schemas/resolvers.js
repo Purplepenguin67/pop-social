@@ -70,9 +70,10 @@ const resolvers = {
             }
         },
         addComment: async (parents, { commentContent }, context) => {
+            const currentUser = await User.findOne({ _id: context.user._id })
             const newComment = await Comment.create({
                 commentContent: commentContent,
-                username: context.user.username
+                username: curentUser.username
             });
             try {
                 const updatedUser = await User.findOneAndUpdate(
