@@ -11,7 +11,7 @@ import Form from 'react-bootstrap/Form';
 const AppNavbar = () => {
   // set modal display state
   const [showModal, setShowModal] = useState(false);
-  const shirkhand = { fontFamily: 'Shrikhand', fontSize: 35, color:'#FFC2C6' };
+  const shirkhand = { fontFamily: 'Shrikhand', fontSize: 35, color:'#FFA3BB' };
   return (
     <>
       <Navbar bg='white' variant='dark' expand='lg'>

@@ -20,7 +20,7 @@ h6 {
   margin-top: 10px;
 }
 
-#trending{
+#trending {
 margin-top: 10px;
 margin-right: 20px;
 }
@@ -41,7 +41,7 @@ margin-right: 20px;
 }
 #homeNavbar:hover {
   background-color:transparent; /*will change background-color of element on hover */
-  color: white; /*will change color of text within the element on hover */
+  color: #9bdbc1; /*will change color of text within the element on hover */
 }
 .small {
   font-weight: 300;
