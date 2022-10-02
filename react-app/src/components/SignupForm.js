@@ -14,6 +14,7 @@ const SignupForm = () => {
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
 
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
@@ -31,16 +32,16 @@ const SignupForm = () => {
       event.stopPropagation();
     }
 
-    try {
-      const { data } = await addUser({
-        variables: { ...userFormData },
-      });
+    // try {
+    //   const { data } = await addUser({
+    //     variables: { ...userFormData },
+    //   });
 
-      Auth.login(data.addUser.token);
-    } catch (err) {
-      console.error(err);
-      setShowAlert(true);
-    }
+    //   Auth.login(data.addUser.token);
+    // } catch (err) {
+    //   console.error(err);
+    //   setShowAlert(true);
+    // }
 
     setUserFormData({
       username: '',
@@ -48,9 +49,12 @@ const SignupForm = () => {
       password: '',
     });
   };
-
+  const shirkhand = { fontFamily: 'Shrikhand', color:'#FEC6D0' };
   return (
-    <>
+    <div className="card mx-auto mt-5 bg-info card-rounded w-50">
+      <div className="card-header bg-white text-center ">
+        <h2>Welcome to</h2><h1 style={ shirkhand }>PopSocial!</h1>
+      </div>
       {/* This is needed for the validation functionality above */}
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         {/* show alert if server response is bad */}
@@ -95,15 +99,17 @@ const SignupForm = () => {
             required
           />
           <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
-        </Form.Group>
+        </Form.Group >
+        <div style={{ display:'flex', justifyContent:'center', alignItem:'center' }}>
         <Button
           disabled={!(userFormData.username && userFormData.email && userFormData.password)}
           type='submit'
           variant='success'>
           Submit
         </Button>
+        </div>
       </Form>
-    </>
+</div>
   );
 };
 
