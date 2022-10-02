@@ -1,6 +1,7 @@
 const { User, Post, Comment } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
+const mongoose = require('mongoose');
 
 const resolvers = {
     // Query and Mutations Definitions
@@ -73,7 +74,7 @@ const resolvers = {
             const currentUser = await User.findOne({ _id: context.user._id })
             const newComment = await Comment.create({
                 commentContent: commentContent,
-                username: curentUser.username
+                username: currentUser.username
             });
             try {
                 const updatedUser = await User.findOneAndUpdate(
@@ -102,10 +103,10 @@ const resolvers = {
             return updatedComment;
         },
         removePost: async (parents, { postId }, context) => {
-            const removedPost = await Post.destroy({ _id: postId });
+            const removedPost = await Post.deleteOne({ _id: mongoose.Types.ObjectId(postId) });
             const updatedUser = await User.findOneAndUpdate(
                 { _id: context.user._id },
-                { $pull: { posts: postId } },
+                { $pull: { posts: removedPost._id } },
                 { new: true }
             );
             return updatedUser;
