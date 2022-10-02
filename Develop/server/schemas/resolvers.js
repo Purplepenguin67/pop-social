@@ -1,6 +1,7 @@
 const { User, Post, Comment } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
+const mongoose = require('mongoose');
 
 const resolvers = {
     // Query and Mutations Definitions
@@ -54,26 +55,26 @@ const resolvers = {
             return { token, user };
         },
         addPost: async (parents, { postContent }, context) => {
-            // const currentUser = await User.findOne({ username: context.user._id })
-            console.log(context.user)
+            const currentUser = await User.findOne({ _id: context.user._id })
             const newPost = await Post.create({
                 postContent: postContent,
-                username: "test"
+                username: currentUser.username
             });
-            return newPost;
-            // try {
-            //     const updatedUser = await User.findOneAndUpdate(
-            //         { _id: context.user._id },
-            //         { $addToSet: { posts: newPost._id } },
-            //         { new: true, runValidators: true });
-            //     return updatedUser;
-            // } catch (err) {
-            // }
+            try {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $addToSet: { posts: newPost._id } },
+                    { new: true, runValidators: true });
+                return updatedUser;
+            } catch (err) {
+                console.log(err);
+            }
         },
         addComment: async (parents, { commentContent }, context) => {
+            const currentUser = await User.findOne({ _id: context.user._id })
             const newComment = await Comment.create({
                 commentContent: commentContent,
-                username: context.user.username
+                username: currentUser.username
             });
             try {
                 const updatedUser = await User.findOneAndUpdate(
@@ -102,10 +103,10 @@ const resolvers = {
             return updatedComment;
         },
         removePost: async (parents, { postId }, context) => {
-            const removedPost = await Post.destroy({ _id: postId });
+            const removedPost = await Post.deleteOne({ _id: mongoose.Types.ObjectId(postId) });
             const updatedUser = await User.findOneAndUpdate(
                 { _id: context.user._id },
-                { $pull: { posts: postId } },
+                { $pull: { posts: removedPost._id } },
                 { new: true }
             );
             return updatedUser;
