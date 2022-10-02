@@ -4,6 +4,7 @@ import { Nav, Form } from 'react-bootstrap';
 const Home = () => {
   const homeHeader = { fontFamily: 'Shrikhand', color:'#FFA3BB', fontSize:35};
     return (
+      // here starts the left side of the Navbar
       <div>
          <div class="row">
         <div class="col-md-2">
@@ -26,8 +27,8 @@ const Home = () => {
               <span className="navbar-toggler-icon"></span>
                </button>
         </nav>
-            
         </div>
+        {/* here starts the center content portion. The User's social timeline */}
         <div class="row col-lg-6 mx-auto">
         <div id="status" class="column h-100">
         <Form.Group className="mb-3 g-4">
@@ -50,9 +51,12 @@ const Home = () => {
             </div>
         </div>
         </div>
+
+        {/* Here starts the Trending section */}
         <div id="trending" class="row col-md-2 ">
-        <Form.Label style={homeHeader}>Trending</Form.Label>
         <div className="square bg-light rounded-6">
+        <Form.Label style={homeHeader}>Trending</Form.Label>
+        <div></div>
             This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
             </div>
         </div>
