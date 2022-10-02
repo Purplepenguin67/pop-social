@@ -10,25 +10,8 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import TestPage from './pages/TestPage';
+import Profile from './pages/Profile';
 import Navbar from './components/Navbar';
-// import SearchBooks from './pages/SearchBooks';
-// import SavedBooks from './pages/SavedBooks';
-// import Navbar from './components/Navbar';
-
-// function App() {
-//   return (
-//     <Router>
-//       <>
-//         <Navbar />
-//         <Switch>
-//           <Route exact path='/' component={SearchBooks} />
-//           <Route exact path='/saved' component={SavedBooks} />
-//           <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
-//         </Switch>
-//       </>
-//     </Router>
-//   );
-// }
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -61,7 +44,7 @@ function App() {
           <Navbar />
           <Switch>
             <Route exact path='/' component={TestPage} />
-            {/* <Route exact path='/profile' component={Profile} /> */}
+            <Route exact path='/profile' component={Profile} />
             <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
           </Switch>
         </>

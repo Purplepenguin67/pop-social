@@ -27,12 +27,12 @@ export const ADD_USER = gql`
 export const ADD_POST = gql`
   mutation addPost($postContent: String!) {
     addPost(postContent: $postContent) {
-        _id
-        postContent
-        upvotes
-        createdAt
-        username
-        comments
+      _id
+      username
+      email
+      posts
+      comments
+      friends
     }
   }
 `;
@@ -40,12 +40,12 @@ export const ADD_POST = gql`
 export const ADD_COMMENT = gql`
   mutation addComment($commentContent: String!) {
     addComment(commentContent: $commentContent) {
-        _id
-        commentContent
-        upvotes
-        createdAt
-        username
-        postId
+      _id
+      username
+      email
+      posts
+      comments
+      friends
     }
   }
 `;
