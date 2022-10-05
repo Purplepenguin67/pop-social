@@ -9,9 +9,11 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Homepage from './pages/Homepage';
 import Profile from './pages/Profile';
 import Navbar from './components/Navbar';
+import SignupForm from './components/SignupForm';
+// import { signToken } from '../../server/utils/auth';
+import Home from './pages/Homepage';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -43,6 +45,8 @@ function App() {
         <>
           <Navbar />
           <Switch>
+            <Route exact path='/' component={SignupForm} />
+            <Route exact path='/home' component={Home} />
             <Route exact path='/' component={Homepage} />
             <Route exact path='/profile' component={Profile} />
             <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
-// import SignUpForm from './SignupForm';
+import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
 import Auth from '../utils/auth';
 import Form from 'react-bootstrap/Form';
@@ -16,7 +16,7 @@ const AppNavbar = () => {
         <>
             <Navbar bg='white' variant='dark' expand='lg'>
                 <Container fluid>
-                    <Navbar.Brand style={shirkhand} as={Link} to='/'>
+                    <Navbar.Brand style={shirkhand} as={Link} to='/home'>
                         PopSocial
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls='navbar' />
