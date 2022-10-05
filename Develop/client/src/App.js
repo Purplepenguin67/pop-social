@@ -9,7 +9,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import TestPage from './pages/TestPage';
+import Homepage from './pages/Homepage';
 import Profile from './pages/Profile';
 import Navbar from './components/Navbar';
 
@@ -43,7 +43,7 @@ function App() {
         <>
           <Navbar />
           <Switch>
-            <Route exact path='/' component={TestPage} />
+            <Route exact path='/' component={Homepage} />
             <Route exact path='/profile' component={Profile} />
             <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
           </Switch>
