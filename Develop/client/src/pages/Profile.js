@@ -4,7 +4,7 @@ import Auth from '../utils/auth';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_POSTS, GET_ME } from '../utils/queries';
 import { REMOVE_POST, REMOVE_COMMENT } from '../utils/mutations';
-// import { ADD_POST } from '../utils/mutations';
+import { ADD_POST } from '../utils/mutations';
 
 const Profile = () => {
 

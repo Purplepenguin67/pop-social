@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_POSTS, GET_ME } from '../utils/queries';
-// import { ADD_POST } from '../utils/mutations';
+import { ADD_POST } from '../utils/mutations';
 
 const TestPage = () => {
     const { data: dataPosts } = useQuery(GET_POSTS);
