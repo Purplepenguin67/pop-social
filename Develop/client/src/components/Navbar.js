@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
-import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
 import Auth from '../utils/auth';
 import Form from 'react-bootstrap/Form';
@@ -26,9 +25,6 @@ const AppNavbar = () => {
                             {/* if user is logged in show saved books and logout */}
                             {Auth.loggedIn() ? (
                                 <>
-                                    <Nav.Link style={{ color: 'black' }} as={Link} to='/saved'>
-                                        See Your Books
-                                    </Nav.Link>
                                     <Nav.Link style={{ color: 'black' }} onClick={Auth.logout}>Logout</Nav.Link>
                                 </>
                             ) : (
