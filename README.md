@@ -85,7 +85,7 @@ Github: https://github.com/Purplepenguin67/pop-social
 
 ## Tech Stack
 
-**Client:** React, Redux, TailwindCSS
+**Client:** React, Redux
 
 **Server:** Node, Express
 
