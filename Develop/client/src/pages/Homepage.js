@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
-// import Auth from '../utils/auth';
+import Auth from '../utils/auth';
 import { Nav, Form } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
-// import { useQuery, useMutation } from '@apollo/client';
-// import { GET_POSTS, GET_ME } from '../utils/queries';
-// import { ADD_POST } from '../utils/mutations';
+import { Link } from 'react-router-dom';
 
-const Home = () => {
-    // const { data: dataPosts } = useQuery(GET_POSTS);
-    // const { data: dataMe } = useQuery(GET_ME);
-    // const posts = dataPosts?.posts || [];
-    // const me = dataMe?.me || [];
-
+import { useQuery, useMutation } from '@apollo/client';
+import { GET_POSTS, GET_ME } from '../utils/queries';
+import { ADD_POST } from '../utils/mutations';
 
 const Homepage = () => {
   const { data: dataPosts } = useQuery(GET_POSTS);
