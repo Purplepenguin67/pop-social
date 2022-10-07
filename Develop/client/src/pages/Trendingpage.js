@@ -6,7 +6,7 @@ import { Nav, Form } from 'react-bootstrap';
 // import { GET_POSTS, GET_ME } from '../utils/queries';
 // import { ADD_POST } from '../utils/mutations';
 
-const Home = () => {
+const Trending = () => {
     // const { data: dataPosts } = useQuery(GET_POSTS);
     // const { data: dataMe } = useQuery(GET_ME);
     // const posts = dataPosts?.posts || [];
@@ -52,9 +52,8 @@ const Home = () => {
     //     </>
     // );
 
-      const homeHeader = { fontFamily: 'Shrikhand', color:'#FFA3BB', fontSize:35 };
-      const trendingHeader = { fontFamily: 'Shrikhand', color:'#61769D', fontSize:35};
-      const statusBar = { fontFamily: 'Shrikhand', backgroundColor:'#ECECEC',  }
+      const homeHeader = { fontFamily: 'Shrikhand', color:'#61769D', fontSize:35};
+      const trendingHeader = { fontFamily: 'Shrikhand', color:'#FFA3BB', fontSize:35, text:'center'};
         return (
           // here starts the left side of the Navbar
           <div>
@@ -88,33 +87,31 @@ const Home = () => {
             </div>
             {/* here starts the center content portion. The User's social timeline */}
             <div class="row col-lg-6 mx-auto">
-            <div id="status" className="card h-auto">
-            <Form.Group className="mb-3 g-4 p-2">
-            <Form.Label style={homeHeader}>Home</Form.Label>
-            <Form.Control style={ statusBar }className='bg-#ECECEC' placeholder="What's Popping?..." controlId="formBasicStatus" />
-            
-            <div className="d-grid h-auto p-2 mb-4">
-                <div style={{backgroundColor:'#efe8ad'}} class="card">
+            <div id="status" class="column h-100">
+            <Form.Group className="mb-3 g-4">
+            <Form.Label style={homeHeader}>Trending...</Form.Label>
+            </Form.Group>
+            <div className="d-grid gap-3">
+                <div style={{backgroundColor:'#efe8ad'}} class="card h-100">
                 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                 </div>
-                <div className='column h-auto'> </div>
-                <div style={{backgroundColor:'#efe8ad'}} class="card">
+                <div style={{backgroundColor:'#efe8ad'}} class="card h-100">
                 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                 </div>
-                <div style={{backgroundColor:'#efe8ad'}} class="card">
+                <div style={{backgroundColor:'#efe8ad'}} class="card h-100">
                 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                 </div>
-                <div style={{backgroundColor:'#efe8ad'}} class="card">
+                <div style={{backgroundColor:'#efe8ad'}} class="card h-100">
                 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                 </div>
                 </div>
-                </Form.Group>
             </div>
             </div>
+    
             {/* Here starts the Trending section */}
             <div id="trending" class="row col-md-2 ">
             <div style={{backgroundColor:'#AADD96'}}className="square rounded-6 text-center">
-            <Form.Label style={trendingHeader}>Trending</Form.Label>
+            <Form.Label className="mx-auto" style={trendingHeader}>Friends</Form.Label>
             <div></div>
                 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                 </div>
@@ -124,4 +121,4 @@ const Home = () => {
         );
     };
     
-    export default Home;
+    export default Trending;
