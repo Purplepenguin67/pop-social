@@ -1,7 +1,7 @@
 
 # Pop Social
 
-Pop Social is a website which allows users, who sign-up for free profiles, to connect with friends, work colleagues or people they don't know, online. It allows users to share pictures, and articles, as well as their own thoughts and opinions with however many people they like.
+Pop Social is a website which allows users, who sign-up for free profiles, to connect with friends, work colleagues or people they don't know, online in order to share recipes nad foods from all over. It allows users to post pictures, and articles, as well as their own thoughts and opinions with however many people they like.
 
 ## User Story
 
@@ -41,12 +41,9 @@ Have a high-quality README (with unique name, description, technologies used, sc
 
 - [@Douglas Snodgrass](https://www.github.com/purplepenguin67)
 
-- [@Qing Chang](https://www.github.com/qing507543)
+- [@Qing Chnage](https://www.github.com/qing507543)
 
 - [@Jaewoo Han](https://www.github.com/jaehan213)
-
-- [@Killisi Vazquez](https://www.github.com/GG-EZ415)
-
 ## Deployment
 
 
