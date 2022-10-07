@@ -13,6 +13,11 @@ Pop Social is a website which allows users, who sign-up for free profiles, to co
 
 ## User Story
 
+AS AN avid Foodie
+
+I WANT to be able to share my food experiences with other people
+
+SO THAT I can keep track of what people like
 
 
 ## Acceptance Criteria
