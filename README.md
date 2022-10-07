@@ -45,6 +45,7 @@ Have a high-quality README (with unique name, description, technologies used, sc
 
 - [@Jaewoo Han](https://www.github.com/jaehan213)
 
+- [@Killisi Vazquez](https://www.github.com/GG-EZ415)
 
 ## Deployment
 
