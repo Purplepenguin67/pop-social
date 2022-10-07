@@ -15,7 +15,6 @@ import Home from './pages/Homepage';
 import SignupForm from './components/SignupForm';
 import Friends from './pages/Friendspage';
 import Trending from './pages/Trendingpage';
-// import { signToken } from '../../server/utils/auth';
 
 
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import Auth from '../utils/auth';
-import { Nav, Form} from 'react-bootstrap';
-import Stack from 'react-bootstrap/Stack'
+import { Nav, Form, Card, Col } from 'react-bootstrap';
+// import Stack from 'react-bootstrap/Stack'
 // import { Link } from 'react-router-dom';
 // import { useQuery, useMutation } from '@apollo/client';
 // import { GET_POSTS, GET_ME } from '../utils/queries';
@@ -56,25 +56,27 @@ const Home = () => {
             <div class="row col-lg-6 mx-auto">
             <div id="status" className="card h-auto">
             <Form.Group className="mb-3 g-4 p-2">
-            <Form.Label style={homeHeader}>Home</Form.Label>
+            <Form.Label style={ homeHeader }>Home</Form.Label>
             <Form.Control style={ statusBar }className='bg-#ECECEC' placeholder="What's Popping?..." controlId="formBasicStatus" />
-            
-            
-            <Stack direction="horizontal" gap={3}>
-                <div style={{backgroundColor:'#efe8ad'}} class="card">
+            <Col className="g-5">
+                  {Array.from({ length: 4 }).map((_, idx) => (
+            <Card gap={5}>
+                <div style={{backgroundColor:'#efe8ad'}} >
                 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                 </div>
-                <div className='column h-auto'> </div>
-                <div style={{backgroundColor:'#efe8ad'}} class="card">
+                {/* <div style={{backgroundColor:'#efe8ad'}} >
                 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                 </div>
-                <div style={{backgroundColor:'#efe8ad'}} class="card">
+                <div style={{backgroundColor:'#efe8ad'}} >
                 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                 </div>
-                <div style={{backgroundColor:'#efe8ad'}} class="card">
+                <div style={{backgroundColor:'#efe8ad'}} >
                 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                </div>
-                </Stack>
+                </div> */}
+               
+                </Card>
+                 ))}
+                 </Col>
                 </Form.Group>
             </div>
             </div>
