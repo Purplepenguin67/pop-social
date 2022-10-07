@@ -83,11 +83,11 @@ const Profile = () => {
           </div>
           {/* here starts the center content portion. The User's social timeline */}
           <div class="row col-lg-6 mx-auto">
-          <div id="status" class="column h-100">
-          <Form.Group className="mb-3 g-4">
+          <div id="status" class="card h-100">
+          <Form.Group className="mb-3 g-4 p-2">
           <Form.Label style={profileHeader}>Profile</Form.Label>
           </Form.Group>
-          <div className="d-grid gap-3">
+          <div className="d-grid h-auto p-2 mb-4">
             <div>Here we'll have the person's name and picture</div>
             {/* here is why they can see their past posts */}
             <h5 style={miniHeader}>What you got Cooking</h5>

@@ -51,7 +51,6 @@ function App() {
           <Switch>
             <Route exact path='/' component={SignupForm} />
             <Route exact path='/home' component={Home} />
-            <Route exact path='/' component={Homepage} />
             <Route exact path='/profile' component={Profile} />
             <Route exact path='/friends' component={Friends} />
             <Route exact path='/trending' component={Trending} />

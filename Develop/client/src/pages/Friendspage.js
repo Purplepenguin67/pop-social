@@ -87,11 +87,11 @@ const Friends = () => {
             </div>
             {/* here starts the center content portion. The User's social timeline */}
             <div class="row col-lg-6 mx-auto">
-            <div id="status" class="card h-auto g-4">
-            <Form.Group className="mb-3">
+            <div id="status" class="card h-auto">
+            <Form.Group className="mb-3 g-4 p-2">
             <Form.Label style={homeHeader}>Friends</Form.Label>
             </Form.Group>
-            <div className="d-grid h-auto">
+            <div className="d-grid h-auto p-2 mb-4">
                 <div style={{backgroundColor:'#efe8ad'}} class="card">
                 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                 </div>

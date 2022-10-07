@@ -87,21 +87,21 @@ const Trending = () => {
             </div>
             {/* here starts the center content portion. The User's social timeline */}
             <div class="row col-lg-6 mx-auto">
-            <div id="status" class="column h-100">
+            <div id="status" class="card h-auto">
             <Form.Group className="mb-3 g-4">
             <Form.Label style={homeHeader}>Trending...</Form.Label>
             </Form.Group>
-            <div className="d-grid gap-3">
-                <div style={{backgroundColor:'#efe8ad'}} class="card h-100">
+            <div className="d-grid h-auto p-2 mb-4">
+                <div style={{backgroundColor:'#efe8ad'}} class="card">
                 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                 </div>
-                <div style={{backgroundColor:'#efe8ad'}} class="card h-100">
+                <div style={{backgroundColor:'#efe8ad'}} class="card">
                 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                 </div>
-                <div style={{backgroundColor:'#efe8ad'}} class="card h-100">
+                <div style={{backgroundColor:'#efe8ad'}} class="card">
                 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                 </div>
-                <div style={{backgroundColor:'#efe8ad'}} class="card h-100">
+                <div style={{backgroundColor:'#efe8ad'}} class="card">
                 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                 </div>
                 </div>

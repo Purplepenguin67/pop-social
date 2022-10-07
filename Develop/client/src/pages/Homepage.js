@@ -1,56 +1,22 @@
 import React, { useState } from 'react';
 // import Auth from '../utils/auth';
-import { Nav, Form } from 'react-bootstrap';
+import { Nav, Form} from 'react-bootstrap';
+import Stack from 'react-bootstrap/Stack'
 // import { Link } from 'react-router-dom';
 // import { useQuery, useMutation } from '@apollo/client';
 // import { GET_POSTS, GET_ME } from '../utils/queries';
 // import { ADD_POST } from '../utils/mutations';
-
+// const status = () => {
+//   const inputEl = useRef(null);
+//   const onButtonClick = () => {
+//     // `current` points to the mounted text input element
+//     inputEl.current.focus();
+//   };
+//     return(
+//       <Form.Control>{this.greeting}</Form.Control>
+//     );
+//   };
 const Home = () => {
-    // const { data: dataPosts } = useQuery(GET_POSTS);
-    // const { data: dataMe } = useQuery(GET_ME);
-    // const posts = dataPosts?.posts || [];
-    // const me = dataMe?.me || [];
-
-    // const [postText, setPostText] = useState('');
-
-    // const [addPost, { error }] = useMutation(ADD_POST);
-
-    // const handleTextInput = event => {
-    //     setPostText(event.target.value);
-    // };
-
-    // const handleAddPost = async (text) => {
-    //     // get token
-    //     console.log(text);
-    //     const { data } = await addPost({ variables: { postContent: text } });
-    //     console.log(data)
-    // };
-
-    // console.log(me);
-
-    // if (!Object.keys(posts).length) {
-    //     return <h2>LOADING...</h2>;
-    // }
-
-
-    // console.log(posts);
-    // return (
-    //     <>
-    //         <h1>TEST</h1>
-    //         {Auth.loggedIn() && (
-    //             <h2>logged in user: <span>{me.username}</span></h2>
-    //         )}
-    //         <div>
-    //             <textarea type="text" name="postText" value={postText}
-    //                 onChange={handleTextInput}
-    //             />
-    //             <button type="submit" value="Submit"
-    //                 onClick={() => handleAddPost(postText)}
-    //             >Submit</button>
-    //         </div>
-    //     </>
-    // );
 
       const homeHeader = { fontFamily: 'Shrikhand', color:'#FFA3BB', fontSize:35 };
       const trendingHeader = { fontFamily: 'Shrikhand', color:'#61769D', fontSize:35};
@@ -93,7 +59,8 @@ const Home = () => {
             <Form.Label style={homeHeader}>Home</Form.Label>
             <Form.Control style={ statusBar }className='bg-#ECECEC' placeholder="What's Popping?..." controlId="formBasicStatus" />
             
-            <div className="d-grid h-auto p-2 mb-4">
+            
+            <Stack direction="horizontal" gap={3}>
                 <div style={{backgroundColor:'#efe8ad'}} class="card">
                 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                 </div>
@@ -107,7 +74,7 @@ const Home = () => {
                 <div style={{backgroundColor:'#efe8ad'}} class="card">
                 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                 </div>
-                </div>
+                </Stack>
                 </Form.Group>
             </div>
             </div>
