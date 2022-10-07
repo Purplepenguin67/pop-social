@@ -9,6 +9,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import TestPage from './pages/TestPage';
 import Homepage from './pages/Homepage';
 import Profile from './pages/Profile';
 import Navbar from './components/Navbar';

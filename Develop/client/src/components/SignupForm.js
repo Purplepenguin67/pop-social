@@ -4,7 +4,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import Auth from '../utils/auth';
 
 import { useMutation } from '@apollo/client';
-// import { ADD_USER } from '../utils/mutations';
+import { ADD_USER } from '../utils/mutations';
 
 const SignupForm = () => {
     // set initial form state
@@ -49,8 +49,13 @@ const SignupForm = () => {
         });
     };
 
+    const shirkhand = { fontFamily: 'Shrikhand', color: '#FEC6D0' };
+
     return (
-        <>
+        <div className="card mx-auto mt-5 bg-info card-rounded w-50">
+            <div className="card-header bg-white text-center ">
+                <h2>Welcome to</h2><h1 style={shirkhand}>PopSocial!</h1>
+            </div>
             {/* This is needed for the validation functionality above */}
             <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
                 {/* show alert if server response is bad */}
@@ -103,7 +108,7 @@ const SignupForm = () => {
                     Submit
                 </Button>
             </Form>
-        </>
+        </div>
     );
 };
 
