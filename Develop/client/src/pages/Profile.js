@@ -4,8 +4,8 @@ import { Nav, Form } from 'react-bootstrap';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_POSTS, GET_ME } from '../utils/queries';
-import { REMOVE_POST, REMOVE_COMMENT } from '../utils/mutations';
-// import { ADD_POST } from '../utils/mutations';
+import { ADD_POST } from '../utils/mutations';
+
 
 const Profile = () => {
 
@@ -15,12 +15,15 @@ const Profile = () => {
   const posts = dataPosts?.posts || [];
   const me = dataMe?.me || [];
 
+
   const [removePost, { error: errorPost }] = useMutation(REMOVE_POST);
   const [removeComment, { error: errorComment }] = useMutation(REMOVE_COMMENT);
+
 
   function refreshPage() {
     window.location.reload(false);
   }
+
 
   const handleRemovePost = async event => {
     // get token
@@ -31,6 +34,7 @@ const Profile = () => {
   };
 
   console.log(me);
+
 
   if (!Object.keys(posts).length) {
     return <h2>LOADING...</h2>;
