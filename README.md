@@ -3,6 +3,14 @@
 
 Pop Social is a website which allows users, who sign-up for free profiles, to connect with friends, work colleagues or people they don't know, online in order to share recipes nad foods from all over. It allows users to post pictures, and articles, as well as their own thoughts and opinions with however many people they like.
 
+- [User Story](#user-story)
+- [Acceptance Criteria](#acceptance-criteria)
+- [Screenshots](#screenshots)
+- [Authors](#authors)
+- [Deployment](#deployment)
+- [License](#license)
+
+
 ## User Story
 
 
@@ -32,22 +40,30 @@ Protect sensitive API key information on the server.
 Have a clean repository that meets quality coding standards (file structure, naming conventions, best practices for class and id naming conventions, indentation, high-quality comments, and so on).
 
 Have a high-quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
+
 ## Screenshots
 
+![loginscreenshot](https://user-images.githubusercontent.com/103548864/194455384-72bc1358-0d70-4639-9c72-b023ca3662de.png)
 
 
 
-## Author
+
+## Authors
+
+- [@Killisi Vazquez](https://www.github.com/GG-EZ415)
+
+- [@Jaewoo Han](https://www.github.com/jaehan213)
 
 - [@Douglas Snodgrass](https://www.github.com/purplepenguin67)
 
 - [@Qing Chnage](https://www.github.com/qing507543)
 
-- [@Jaewoo Han](https://www.github.com/jaehan213)
+
+
 ## Deployment
 
 
-
+Heroku: 
 
 Github: https://github.com/Purplepenguin67/pop-social
 
