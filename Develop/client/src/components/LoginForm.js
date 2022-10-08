@@ -45,8 +45,13 @@ const LoginForm = () => {
         });
     };
 
+    const shirkhand = { fontFamily: 'Shrikhand', color: '#FEC6D0' };
+
     return (
-        <>
+        <div className="card mx-auto mt-5 bg-info card-rounded w-50">
+            <div className="card-header bg-white text-center ">
+                <h2>Welcome to</h2><h1 style={shirkhand}>PopSocial!</h1>
+            </div>
             <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
                 <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
                     Something went wrong with your login credentials!
@@ -83,7 +88,7 @@ const LoginForm = () => {
                     Submit
                 </Button>
             </Form>
-        </>
+        </div>
     );
 };
 
