@@ -71,7 +71,7 @@ Have a high-quality README (with unique name, description, technologies used, sc
 ## Deployment
 
 
-Heroku: 
+Heroku: https://pop-social2.herokuapp.com
 
 Github: https://github.com/Purplepenguin67/pop-social
 
